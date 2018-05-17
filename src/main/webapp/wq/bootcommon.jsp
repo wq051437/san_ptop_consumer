@@ -1,6 +1,4 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery.min.js"></script>
- <script src="<%=request.getContextPath() %>/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/uploadify/uploadify.css">
 <script type="text/javascript" src="<%=request.getContextPath() %>/bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/bootstrap/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/bootstrap/bTabs-master/b.tabs.min.js"></script>
@@ -28,6 +26,13 @@
 <link href="<%=request.getContextPath()%>/bootstrap/bootstrapvalidator-master/dist/css/bootstrapValidator.min.css" rel="stylesheet">
 <script src="<%=request.getContextPath()%>/bootstrap/bootstrapvalidator-master/dist/js/bootstrapValidator.min.js"></script>
 <script src="<%=request.getContextPath()%>/bootstrap/bootstrapvalidator-master/dist/js/language/zh_CN.js"></script>
+
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" />
+<script src="<%=request.getContextPath()%>/bootstrap/bootstrap/js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/bootstrap/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="<%=request.getContextPath()%>/bootstrap/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 
 
  
