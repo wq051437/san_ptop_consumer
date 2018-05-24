@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <groupId>com.jk</groupId>
   <artifactId>san_ptop_consumer</artifactId>
   <version>1.0-SNAPSHOT</version>
@@ -96,13 +95,7 @@
       <version>1.1.1</version>
     </dependency>
     <!--引入junit对应的测试jar包 -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <!--添加scope作用域为test时，只有测试的时候才引入jar包 -->
-      <scope>test</scope>
-    </dependency>
+
     <!--引入druid对应jar包 -->
     <dependency>
       <groupId>com.alibaba</groupId>
@@ -144,11 +137,6 @@
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>1.2.17</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.7.21</version>
     </dependency>
 
     <!-- oracle驱动需要官方授权，不能再中央仓库直接下载 -->
@@ -249,10 +237,22 @@
       <version>1.4</version>
     </dependency>
     <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpcore</artifactId>
+      <version>4.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.2</version>
+    </dependency>
+   <!-- <dependency>
       <groupId>commons-httpclient</groupId>
       <artifactId>commons-httpclient</artifactId>
       <version>3.0.1</version>
-    </dependency>
+    </dependency>-->
+
     <!-- dom4j -->
     <dependency>
       <groupId>dom4j</groupId>
@@ -355,12 +355,6 @@
          <artifactId>spring-data-mongodb-log4j</artifactId>
          <version>1.7.1.RELEASE</version>
      </dependency> -->
-    <!-- mongo与log4j结合 -->
-    <dependency>
-      <groupId>org.log4mongo</groupId>
-      <artifactId>log4mongo-java</artifactId>
-      <version>0.7.4</version>
-    </dependency>
     <!--oss上传-->
     <dependency>
       <groupId>com.aliyun.oss</groupId>
@@ -437,6 +431,33 @@
       <artifactId>zookeeper</artifactId>
       <version>3.4.6</version>
     </dependency>-->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.21</version>
+    </dependency>
+
+    <!-- mongo与log4j结合 -->
+    <dependency>
+      <groupId>org.log4mongo</groupId>
+      <artifactId>log4mongo-java</artifactId>
+      <version>0.7.4</version>
+    </dependency>
+    <!-- 验证码jar -->
+   <!-- <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.5</version>
+    </dependency>-->
+<!--
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.4</version>
+    </dependency>
+-->
+
+
   </dependencies>
 
   <build>
