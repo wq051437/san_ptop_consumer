@@ -12,9 +12,22 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/css/lun.css"/>
 
     <jsp:include page="bootcommon.jsp"  flush="true"></jsp:include>
+    <style>
+        #show{
+            width: 890px;
+            height: 200px;
+            border: 1px solid gray;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #div1 img{
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
-    <div class="row">
+    <div class="row" style="background-color:ghostwhite">
         <div class="col-md-3">
             <img src="<%=request.getContextPath()%>/css/timg.jpg"  height="100" width="250"/>
         </div>
@@ -23,7 +36,7 @@
             <!-- Single button -->
             您好，
             <div class="btn-group">
-                <button type="button"      class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button"      class="btn btn-info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     ${sessionScope.qname}<span class="caret"></span>
                     <input  type="hidden"  value="${sessionScope.qname}" id="qname">
                 </button>
@@ -42,14 +55,14 @@
             <div class="col-md-1"></div>
             <div class="col-md-1">
                    <a onclick="showye()">
-                       <button type="button" class="btn btn-primary">
+                       <button type="button" class="btn btn-success">
                               首页
                        </button>
                    </a>
             </div>
             <div class="col-md-1">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                        我要投资<span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
@@ -60,26 +73,26 @@
             </div>
             <div class="col-md-1">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         我要借款<span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
                         <li><a href="#">信用贷</a></li>
                         <li><a  onclick="jiekuan()">个人借款</a></li>
-                        <li><a href="#">企业借款</a></li>
+                        <li><a onclick="qyjiekuan()">企业借款</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-1">
                 <a>
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-success">
                         信息披露
                     </button>
                 </a>
             </div>
             <div class="col-md-1">
                 <a onclick="zhenghao()">
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-success">
                         我的账号
                     </button>
                 </a>
@@ -88,22 +101,38 @@
 <div style="display:none"  id="show">
     <div class="bigBox" id="bBox">
         <div class="smallBox" id="sBox">
-            <img src="<%=request.getContextPath()%>/css/timg (4).jpg" height="350" width="980"/>
-            <img src="<%=request.getContextPath()%>/css/timg (3).jpg"  height="350" width="890"/>
-            <img src="<%=request.getContextPath()%>/css/timg (2).jpg"  height="350" width="890"/>
-            <img src="<%=request.getContextPath()%>/css/timg (1).jpg"  height="350" width="890"/>
-            <img src="<%=request.getContextPath()%>/css/timg (4).jpg"  height="350" width="890"/>
+            <img src="<%=request.getContextPath()%>/css/timg (4).jpg" height="200" width="890"/>
+            <img src="<%=request.getContextPath()%>/css/timg (3).jpg"  height="200" width="890"/>
+            <img src="<%=request.getContextPath()%>/css/timg (2).jpg"  height="200" width="890"/>
+            <img src="<%=request.getContextPath()%>/css/timg (1).jpg"  height="200" width="890"/>
+            <img src="<%=request.getContextPath()%>/css/timg (4).jpg"  height="200" width="890"/>
         </div>
         <a href="javascript:;" class="left ab" id="left"></a>
         <a href="javascript:;" class="right ab" id="right"></a>
     </div>
 </div>
- <div  style="display:none"   id="zhanghao" >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div  style="display:none"   id="zhanghao" >
      <div  class="container-fluid"  >
          <div class="row">
              <div class="col-lg-2">
-                 <img src="<%=request.getContextPath()%>/css/timg (5).jpg"  height="150" width="200"   class="img-circle"/>
-                 <div id="tree"></div>
+                 <div class="tree well"   >
+                     <img   src="<%=request.getContextPath()%>/css/timg (5).jpg"  height="100" width="160"   class="img-circle"/>
+                     <div id="tree" ></div>
+                 </div>
              </div>
              <div class="col-lg-10"  >
                  <!-- 标签页区域 -->
@@ -117,8 +146,45 @@
                      <div class="tab-content"  >
                          <!-- 默认标签页（首页）的内容区域 -->
                          <div class="tab-pane active" id="bTabs_navTabsMainPage">
-                             <div class="page-header">
-                                 <h2 style="font-size: 31.5px;text-align: center;font-weight: normal;">欢迎进入</h2>
+                             <div class="row" style="text-align:left;font-size: 15px;line-height: 40px;width: 900px;background-color:aliceblue">
+                                 <script type="text/javascript">
+                                     function display(clock){
+                                         var now=new Date();   //创建Date对象
+                                         var year=now.getFullYear(); //获取年份
+                                         var month=now.getMonth(); //获取月份
+                                         var date=now.getDate();  //获取日期
+                                         var day=now.getDay();  //获取星期
+                                         var hour=now.getHours(); //获取小时
+                                         var minu=now.getMinutes(); //获取分钟
+                                         var sec=now.getSeconds(); //获取秒钟
+                                         month=month+1;
+                                         var arr_week=new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+                                         var week=arr_week[day];  //获取中文的星期
+                                         var time=year+"年"+month+"月"+date+"日 "+week+" "+hour+":"+minu+":"+sec; //组合系统时间
+                                         clock.innerHTML="当前时间："+time; //显示系统时间
+                                     }
+                                     window.onload=function(){
+                                         window.setInterval("display(clock)", 1000);
+                                     }
+                                 </script>
+                                 <div id="clock" style="text-align:center"></div>
+                             </div><br>
+                             <div class="container">
+                                 <div class="row clearfix">
+                                     <div class="col-md-8 row" style="width: 570px;height: 400px;background-color:aliceblue">
+                                         这里做一个展示报表
+                                     </div>
+                                     <div class="col-md-8 row" style="width: 360px;height: 400px;background-color:aliceblue"><br>
+                                         可用余额(元)：8524.44<br><br>
+                                         冻结金额(元)：1000.00<hr style="border:0;background-color:#ff0000;height:1px;">
+                                         <a href="">红包(元)：500.00</a><br><br>
+                                         <a href="">加息券(张)：2</a><br><br>
+                                         <a href="">体验金(元)：50000.00</a><hr style="border:0;background-color:#ff0000;height:1px;">
+                                         <input type="button" id="chongzhi"  class="btn06 sumbitForme btn btn-primary"  value="充值"/>
+                                         <input type="button"  class="btn06 sumbitForme btn btn-warning"  value="提现"/>
+                                         <input type="button"  class="btn06 sumbitForme btn btn-default"  value="还款"/>
+                                     </div>
+                                 </div>
                              </div>
                              <div style="text-align: center;font-size: 20px;line-height: 20px;">
                                  <div class="page-header">
@@ -155,6 +221,10 @@
                             <tr>
                                 <td><h4>联系人：</h4></td>
                                 <td><input name="loanname" id="loannameid" type="text" class="form-control"  placeholder="3到10位之间"/></td>
+                            </tr>
+                            <tr>
+                                <td><h4>借款标题：</h4></td>
+                                <td><input name="loantitle" id="loantitleid" type="text" class="form-control"  placeholder="32位之内"/></td>
                             </tr>
                             <tr>
                                 <td><h4>手机号：</h4></td>
@@ -232,6 +302,120 @@
             </center>
         </form>
     </div>
+    <div style="display:none"  id="show3">
+        <form method="post" id="formid2">
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-md-10 column">
+                        <div class="ml30 lh28 pt10 mr30">
+                            <h3>借款意向（企业）</h3><hr>
+                            <h4 style="color: #003399">提示 !</h4><br>
+                            <font color="#dc143c">提示</font>
+                            1.由于业务原因，肥猪网贷目前只支持全国部分城市的借款业务；
+                            2.请仔细填写您的真实信息，我们将与您取得联系；<br><br>
+                            <div class="container" style="background-color: #94A6B0">
+                                <h4> 借款意向填写</h4>
+                            </div><br>
+                        </div>
+                    </div>
+                    <center>
+                        <table  width="600px">
+                            <tr>
+                                <td><h4>企业名称：</h4></td>
+                                <td><input name="companyname" id="companynameid" type="text" class="form-control"  placeholder="32位之内"/></td>
+                            </tr>
+                            <tr>
+                                <td><h4>注册号：</h4></td>
+                                <td><input name="registration" id="registrationid" type="text" class="form-control" placeholder="企业注册号"/></td>
+                            </tr>
+                            <tr>
+                                <td><h4>联系人：</h4></td>
+                                <td><input name="contactname" id="contactnameid" type="text" class="form-control"  placeholder="3到10位之间"/></td>
+                            </tr>
+                            <tr>
+                                <td><h4>借款标题：</h4></td>
+                                <td><input name="loantitle" id="loantitleid2" type="text" class="form-control"  placeholder="32位之内"/></td>
+                            </tr>
+                            <tr>
+                                <td><h4>手机号：</h4></td>
+                                <td><input name="companyphone" id="companyphoneid" type="text" class="form-control" placeholder="11位手机号"/></td>
+                            </tr>
+                            <tr>
+                                <td><h4>公司地址：</h4></td>
+                                <td><input name="companyadress" id="companyadressid" type="text" class="form-control"  placeholder="公司具体地址"/></td>
+                            </tr>
+                            <tr>
+                                <td><h4>意向借款金额（元）：</h4></td>
+                                <td><input name="loanmoney" type="text" id="loanmid" class="form-control" placeholder="单位/元"/></td>
+                            </tr>
+                            <tr>
+                                <td><h4>借款期限（月）：</h4></td>
+                                <td><input name="loandate" type="text" id="loandateid" class="form-control" placeholder="1-24个月"/></td>
+                            </tr>
+                            <tr>
+                                <td><h4>借款类型：</h4></td>
+                                <td>
+                                    <input type="checkbox" name="loantype" value=1 class="mr5"/>抵押
+                                    <input type="checkbox" name="loantype" value=2 class="ml20 mr5"/>实地认证
+                                    <input type="checkbox" name="loantype" value=3 class="ml20 mr5"/>担保
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><h4>所在城市：</h4></td>
+                                <td>
+                                    <select style="width: 180px" class="form-control" name="companycity" id="shengid2">
+                                        <option value="0">请选择省</option>
+                                    </select>
+                                    <select style="width: 180px" class="form-control" name="companycity" id="shiid2">
+                                        <option value="0">请选择市</option>
+                                    </select>
+                                    <select style="width: 180px" class="form-control" name="companycity" id="xianid2">
+                                        <option value="0">请选择县</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><h4>预期筹款期限：</h4></td>
+                                <td>
+                                    <select name="fundraisingtime" class="form-control" id="F092">
+                                        <option value=>请选择</option>
+                                        <option value=1>7天之内</option>
+                                        <option value=2>15天之内</option>
+                                        <option value=3>15-30天</option>
+                                        <option value=4>1-3个月</option>
+                                        <option value=5>其他期限</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><h4>借款描述：</h4></td>
+                                <td>
+                                    <textarea class="form-control" rows="3" name="loandescribe" placeholder="50个字内"></textarea>
+                                </td>
+                            </tr>
+
+                        </table><br>
+
+                    </center>
+                </div>
+            </div>
+            <center>
+                <ul>
+                    <li class="item">
+                        <div class="til">&nbsp;</div>
+                        <div class="con" >
+                            <input name="iAgree" onclick="blockDiv2()" type="checkbox" id="iAgree2"/>&nbsp;<label for="iAgree2">我已阅读并同意</label>
+                            <a target="_blank" href="/zxs/tiaokuan.jsp" class="highlight">《个人信息采集授权条款》</a>
+                        </div>
+                    <li/>
+
+                    <div  id="hiddenDiv2" style="display:none;">
+                        <input type="button" id="tj2"  class="btn06 sumbitForme btn btn-primary"  value="提  交"/>
+                    </div>
+                </ul>
+            </center>
+        </form>
+    </div>
 <script>
     $(function(){
         $('#show').show();
@@ -242,19 +426,27 @@
     function  zhenghao(){
 
      if($("#qname").val()!==null&&$("#qname").val()!==""){
+        var  qname=   $("#qname").val();
          $('#show').hide();
+         $('#show2').hide();
+         $('#show3').hide();
          $('#zhanghao').show();
      }else{
          top.location = "<%=request.getContextPath()%>/qian/bpl/login.jsp";
          return false;
      }
     }
-
     function  jiekuan(){
-        alert(12)
         $('#show').hide();
         $('#zhanghao').hide();
+        $("#show3").hide();
      $("#show2").show();
+    }
+    function  qyjiekuan(){
+        $('#show').hide();
+        $('#zhanghao').hide();
+        $("#show2").hide();
+        $("#show3").show();
     }
 </script>
 <script>
@@ -288,7 +480,7 @@
 
 
 
-    <%--按钮隐藏************************************************************--%>
+    <%--个人按钮隐藏************************************************************--%>
     <script type="text/javascript">
         function blockDiv(){
             var div = document.getElementById("hiddenDiv").style.display;
@@ -296,6 +488,17 @@
                 document.getElementById("hiddenDiv").style.display='block';
             }else{
                 document.getElementById("hiddenDiv").style.display='none';
+            }
+        }
+    </script>
+    <%--企业按钮隐藏************************************************************--%>
+    <script type="text/javascript">
+        function blockDiv2(){
+            var div = document.getElementById("hiddenDiv2").style.display;
+            if(div=='none'){
+                document.getElementById("hiddenDiv2").style.display='block';
+            }else{
+                document.getElementById("hiddenDiv2").style.display='none';
             }
         }
     </script>
@@ -346,6 +549,17 @@
                 alert("用户名长度必须在3到10位之间！");
                 return false;
             }
+            //借款标题验证
+            var a=document.getElementById("loantitleid");
+            a = a.value;
+            if(a.length>32){
+                alert("借款标题长度必须在32位之内！");
+                return false;
+            }
+            if(a==''){
+                alert("借款标题不能为空！");
+                return false;
+            }
             //手机验证------------------------------------------------------
             var p = document.getElementById("loanphoneid");
             p=p.value;
@@ -371,6 +585,106 @@
             })
         })
 
+        //    企业新增**********************************************************************************
+        $("#tj2").on("click",function(){
+            //企业名称验证------------------------------------------------------
+            var a=document.getElementById("companynameid");
+            a = a.value;
+            if(a.length>32){
+                alert("企业名称长度必须在32位之内！");
+                return false;
+            }
+            if(a==''){
+                alert("企业名称不能为空！");
+                return false;
+            }
+            //注册号验证------------------------------------------------------
+            var b=document.getElementById("registrationid");
+            b = b.value;
+            if(b==''){
+                alert("注册号不能为空！");
+                return false;
+            }
+            if(a==''){
+                alert("企业名称不能为空！");
+                return false;
+            }
+            //联系人验证------------------------------------------------------
+            var n=document.getElementById("contactnameid");
+            n = n.value;
+            if(n.length<3||n.length>10 & n!=''){
+                alert("联系人不能为空并且长度必须在3到10位之间！");
+                return false;
+            }
+            //借款标题验证------------------------------------------------------
+            var n=document.getElementById("loantitleid2");
+            n = n.value;
+            if(n.length<3||n.length>10 & n!=''){
+                alert("借款标题不能为空并且长度必须在3到10位之间！");
+                return false;
+            }
+            //手机号验证------------------------------------------------------
+            var p = document.getElementById("companyphoneid");
+            p = p.value;
+            if(p.length!=11 & p!=''){
+                alert("手机号不能为空！必须为11位！");
+                return false;
+            }
+            //公司地址验证------------------------------------------------------
+            var c = document.getElementById("companyadressid");
+            c=c.value;
+            if(c==''){
+                alert("公司地址不能为空！");
+                return false;
+            }
+            //意向借款金额验证------------------------------------------------------
+            var d = document.getElementById("loanmid");
+            d=d.value;
+            if(d==''){
+                alert("金额不能为空！");
+                return false;
+            }
+            //借款期限验证------------------------------------------------------
+            var e = document.getElementById("loandateid");
+            e=e.value;
+            if(e==''){
+                alert("借款期限不能为空！");
+                return false;
+            }
+            $.ajax({
+                url:'<%=request.getContextPath()%>/zxsjkController/addqyjiekuan.do',
+                type:'post',
+                data:$("#formid2").serialize(),
+                dataType:'text',
+                async:false,
+                success:function(addFlag) {
+                    alert("新增成功!")
+                    //$("#formid").bootstrapTable('refresh');
+                    history.go(0)
+                    //$("#file-DingDan").bootstrapTable("refresh",{'pageNumber':1});
+                },
+                error:function(){
+                    alert("新增错误!")
+                }
+            })
+        })
+
+
+
+
+
+
+
+
+
+        $("#chongzhi").on("click",function(){
+
+                location.href='<%=request.getContextPath()%>/zxs/chongzhi.jsp'
+
+        })
     </script>
+
 </body>
+
+
 </html>

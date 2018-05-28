@@ -19,6 +19,15 @@ public class QUserBean implements Serializable{
     private String usertype;//用户类型
     private String logintime;//登录时间
     private String lhcontent;//拉黑原因
+    private Integer  jiaoyimima;
+
+    public Integer getJiaoyimima() {
+        return jiaoyimima;
+    }
+
+    public void setJiaoyimima(Integer jiaoyimima) {
+        this.jiaoyimima = jiaoyimima;
+    }
 
     public String getLhcontent() {
         return lhcontent;
@@ -131,6 +140,7 @@ public class QUserBean implements Serializable{
                 ", usertype='" + usertype + '\'' +
                 ", logintime='" + logintime + '\'' +
                 ", lhcontent='" + lhcontent + '\'' +
+                ", jiaoyimima=" + jiaoyimima +
                 '}';
     }
 

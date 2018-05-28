@@ -17,7 +17,7 @@
         <div class="panel-heading">
             <h3 class="panel-title">增加机构账号</h3>
         </div>
-        <form id="addQyForm" class="form-inline">
+        <form id="addJgForm" class="form-inline">
             <input type="hidden" name="registersource" value="后台注册">
             <input type="hidden" name="usertype" value="企业">
             <br>
@@ -26,7 +26,7 @@
                     <tr>
                         <td align="right"><font color="red">*</font>机构名称：</td>
                         <td>
-                            <input type='text' name="qyname" class="form-control">
+                            <input type='text' name="jgname" class="form-control">
                         </td>
                         <td align="right"><font color="red">*</font>机构简称：</td>
                         <td>
@@ -40,7 +40,7 @@
                         </td>
                         <td align="right"><font color="red">*</font>机构纳税号：</td>
                         <td>
-                            <input type='text' name="qypaytaxesnum" class="form-control">
+                            <input type='text' name="jgpaytaxesnum" class="form-control">
                         </td>
                     </tr>
                     <tr>
@@ -66,11 +66,11 @@
                     <tr>
                         <td align="right"><font color="red">*</font>法人：</td>
                         <td>
-                            <input type='text' name="qyfr" class="form-control">
+                            <input type='text' name="jgfr" class="form-control">
                         </td>
                         <td align="right"><font color="red">*</font>机构规模：</td>
                         <td>
-                            <input type='text' name="qyscale" class="form-control">人
+                            <input type='text' name="jgscale" class="form-control">人
                         </td>
                     </tr>
                     <tr>
@@ -117,12 +117,14 @@
                     <tr>
                         <td align="right"><font color="red">*</font>担保机构介绍：</td>
                         <td colspan="3">
-                            <textarea name=""></textarea>
+                            <textarea name="jgreferral"></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td align="right"><font color="red">*</font>担保情况描述：</td>
-                        <td></td>
+                        <td colspan="3">
+                            <textarea name="qkdescription"></textarea>
+                        </td>
                     </tr>
                     <tr>
                         <td align="right"><font color="red">*</font>是否允许购买不良债权：</td>
@@ -150,15 +152,15 @@
         //新增企业用户
         $("#addjgButton").on("click",function(){
             $.ajax({
-                url:"<%=request.getContextPath()%>/wqAccountManageController/addQyUser.do",
+                url:"<%=request.getContextPath()%>/wqAccountManageController/addJgUser.do",
                 type:"post",
-                data:$("#addQyForm").serialize(),
+                data:$("#addJgForm").serialize(),
                 dataType:"text",
                 success:function(result){
                     location.href = "<%=request.getContextPath()%>/tiao/wq/accountmanage.jsp";
                 },
                 error:function () {
-                    alert("添加企业信息出错!");
+                    alert("添加机构信息出错!");
                 }
             })
         });

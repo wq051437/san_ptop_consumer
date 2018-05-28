@@ -37,6 +37,19 @@
                 </td>
             </tr>
             <tr>
+                <td>姓别</td>
+                <td>
+                    <input type='radio' name="grsex" value="男">&nbsp;男&nbsp;&nbsp;
+                    <input type='radio' name="grsex" value="女">&nbsp;女
+                </td>
+            </tr>
+            <tr>
+                <td>出生日期</td>
+                <td>
+                    <input type="text" class="form-control" id="grbirthday" name="grbirthday" placeholder="请填写出生日期">
+                </td>
+            </tr>
+            <tr>
                 <td>身份证号</td>
                 <td>
                     <input type='text' name="gridcard" id="gridcard"  class="form-control" placeholder="请填写身份证号">
@@ -69,6 +82,15 @@
             </tr>
         </table>
     </form>
+
+    <script type="text/javascript">
+        $("#grbirthday").datetimepicker({
+            format: "yyyy-mm-dd",//显示格式
+            language: 'zh-CN',//显示中文
+            autoclose: true,//选中自动关闭
+            todayBtn: true,//显示今日按钮
+        });
+    </script>
 
 </body>
 </html>

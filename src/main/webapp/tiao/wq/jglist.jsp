@@ -99,14 +99,45 @@
         });
         function actionFormatterj(value,row,index){
             var buttonxl= "";
-            //buttonxl += "<button type='button' onclick='lockButton("+row.userid+")' class='btn btn-danger'>查看</button>";
-            //buttonxl += "<button type='button' onclick='updategruserButton("+row.grid+")' class='btn btn-info'>修改</button>";
+            //buttonxl += "<button type='button' onclick='lockButton("+row.jgid+")' class='btn btn-danger'>查看</button>";
+            buttonxl += "<button type='button' onclick='updatejguserButton("+row.jgid+")' class='btn btn-info'>修改</button>";
             return buttonxl;
         }
         //导出机构信息
         $("#ExceportJgButton").on("click",function(){
             location.href = "<%=request.getContextPath()%>/wqJgNewsController/ExceportJg.do";
         });
+        //修改机构信息
+        function updatejguserButton(jgid){
+            BootstrapDialog.show({
+                title:"修改机构信息",//标题
+                message:$("<div></div>").load("<%=request.getContextPath()%>/wqJgNewsController/backShowJg.do?jgid="+jgid),//弹框内容
+                type:BootstrapDialog.TYPE_WARNING,//弹框的类型
+                closable: true,
+                draggable : true,
+                buttons:[
+                    {
+                        label:"确定",
+                        cssClass:"btn-success",
+                        action:function(dialog){
+                            $.ajax({
+                                url:"<%=request.getContextPath()%>/wqJgNewsController/updateJgUser.do",
+                                type:"post",
+                                data:$("#updateJgUserForm").serialize(),
+                                dataType:"text",
+                                success:function(result){
+                                    dialog.close();
+                                    location.reload();
+                                },
+                                error:function () {
+                                    alert("修改机构信息出错!");
+                                }
+                            })
+                        }
+                    }
+                ]
+            });
+        };
 
     </script>
 

@@ -2,6 +2,7 @@ package com.jk.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jk.model.GrManagerBean;
+import com.jk.model.JgManagerBean;
 import com.jk.model.QUserBean;
 import com.jk.model.QyManagerBean;
 
@@ -28,4 +29,6 @@ public interface WqAccountManageService {
     QUserBean backShowUsername(Integer userid);
 
     void addQyUser(QUserBean qUserBean, QyManagerBean qyManagerBean);
+
+    void addJgUser(QUserBean qUserBean, JgManagerBean jgManagerBean);
 }

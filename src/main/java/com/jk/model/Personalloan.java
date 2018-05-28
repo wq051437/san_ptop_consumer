@@ -9,9 +9,11 @@ public class Personalloan implements Serializable{
     private static final long serialVersionUID = 8421048313276571522L;
 
     private Integer loanid;           //个人借款ID
+    private String loantitle;       //借款标题
     private String loanname;         //联系人名字
     private Long loanphone;       //联系人电话
     private Integer loanmoney;       //借款金额
+    private Integer moneyrate;       //利率（%）
     private Integer loanmonth;       //借款期限（月）
     private Integer loantypeid;      //借款类型
     private String loanadress;       //所在城市
@@ -21,6 +23,30 @@ public class Personalloan implements Serializable{
     private Integer loanstate;       //状态  -------  1.已处理   2.未处理
     private String pusername;        //登陆人
     private String process;          //处理结果
+    private String handletime;       //处理时间
+    private Integer loanhandle;     //处理结果 -------1.同意   2.不同意
+    private Integer lendstate;      //放款状态------- 1.已放款   2.未放款
+    private Integer userid;         //关联用户表
+
+    private String capitalname;      //关联账号名称
+    private String repaymenttime;    //还款日期
+    private long surplusday;       //剩余天数
+
+    public String getRepaymenttime() {
+        return repaymenttime;
+    }
+
+    public void setRepaymenttime(String repaymenttime) {
+        this.repaymenttime = repaymenttime;
+    }
+
+    public long getSurplusday() {
+        return surplusday;
+    }
+
+    public void setSurplusday(long surplusday) {
+        this.surplusday = surplusday;
+    }
 
     public Integer getLoanid() {
         return loanid;
@@ -28,6 +54,14 @@ public class Personalloan implements Serializable{
 
     public void setLoanid(Integer loanid) {
         this.loanid = loanid;
+    }
+
+    public String getLoantitle() {
+        return loantitle;
+    }
+
+    public void setLoantitle(String loantitle) {
+        this.loantitle = loantitle;
     }
 
     public String getLoanname() {
@@ -52,6 +86,14 @@ public class Personalloan implements Serializable{
 
     public void setLoanmoney(Integer loanmoney) {
         this.loanmoney = loanmoney;
+    }
+
+    public Integer getMoneyrate() {
+        return moneyrate;
+    }
+
+    public void setMoneyrate(Integer moneyrate) {
+        this.moneyrate = moneyrate;
     }
 
     public Integer getLoanmonth() {
@@ -126,13 +168,55 @@ public class Personalloan implements Serializable{
         this.process = process;
     }
 
+    public String getHandletime() {
+        return handletime;
+    }
+
+    public void setHandletime(String handletime) {
+        this.handletime = handletime;
+    }
+
+    public Integer getLoanhandle() {
+        return loanhandle;
+    }
+
+    public void setLoanhandle(Integer loanhandle) {
+        this.loanhandle = loanhandle;
+    }
+
+    public Integer getLendstate() {
+        return lendstate;
+    }
+
+    public void setLendstate(Integer lendstate) {
+        this.lendstate = lendstate;
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+    public String getCapitalname() {
+        return capitalname;
+    }
+
+    public void setCapitalname(String capitalname) {
+        this.capitalname = capitalname;
+    }
+
     @Override
     public String toString() {
         return "Personalloan{" +
                 "loanid=" + loanid +
+                ", loantitle='" + loantitle + '\'' +
                 ", loanname='" + loanname + '\'' +
                 ", loanphone=" + loanphone +
                 ", loanmoney=" + loanmoney +
+                ", moneyrate=" + moneyrate +
                 ", loanmonth=" + loanmonth +
                 ", loantypeid=" + loantypeid +
                 ", loanadress='" + loanadress + '\'' +
@@ -142,6 +226,13 @@ public class Personalloan implements Serializable{
                 ", loanstate=" + loanstate +
                 ", pusername='" + pusername + '\'' +
                 ", process='" + process + '\'' +
+                ", handletime='" + handletime + '\'' +
+                ", loanhandle=" + loanhandle +
+                ", lendstate=" + lendstate +
+                ", userid=" + userid +
+                ", capitalname='" + capitalname + '\'' +
+                ", repaymenttime='" + repaymenttime + '\'' +
+                ", surplusday=" + surplusday +
                 '}';
     }
 }

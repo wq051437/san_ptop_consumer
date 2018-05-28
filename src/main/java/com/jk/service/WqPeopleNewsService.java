@@ -1,6 +1,7 @@
 package com.jk.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.jk.model.CapitalBean;
 import com.jk.model.GrManagerBean;
 import com.jk.model.QUserBean;
 
@@ -22,4 +23,6 @@ public interface WqPeopleNewsService {
     List<GrManagerBean> ExceportPeopleNews();
 
     List<QUserBean> ExceportAccount();
+
+    CapitalBean selectCapital(Integer userid);
 }

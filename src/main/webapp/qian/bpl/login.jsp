@@ -32,7 +32,7 @@
                 <div class="user-info">
                     <div class="slide-swiper">
                         <input type="text" value="" style="display: none;" name="username">
-                        <input type="text" placeholder="手机号" id="userphone" maxlength="11" autocomplete="off">
+                        <input type="text" placeholder="用户名" id="username" maxlength="11" autocomplete="off">
                         <span class="right-sign"  ></span>
                         <i class="cancel-input"></i>
                     </div>
@@ -62,21 +62,10 @@
 </div>
 <script>
     $("#login_btn").on("click",function(){
-        var yzphone = /^1[34578]\d{9}$/;
-        var phone = $("#userphone").val();
-        if(phone == "" || phone == null){
-            alert("手机号不能为空!")
-            return false;
-        }else if(!yzphone.test(phone)){
-            alert("手机号格式不正确!")
-            return false;
-        }else{
-            $("#messageqy").html("");
-        }
         $.ajax({
             url:"<%=request.getContextPath()%>/quserController/login.do",
             type:"post",
-            data:{"userphone":$("#userphone").val(),"userpass":$("#userpass").val()},
+            data:{"username":$("#username").val(),"userpass":$("#userpass").val()},
             dataType:"json",
             success:function(results){
                 if(results=="userNo"){

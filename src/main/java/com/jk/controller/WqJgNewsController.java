@@ -1,6 +1,7 @@
 package com.jk.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.jk.model.GrManagerBean;
 import com.jk.model.JgManagerBean;
 import com.jk.model.QUserBean;
 import com.jk.service.WqJgNewsService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,5 +60,20 @@ public class WqJgNewsController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    //回显机构信息
+    @RequestMapping("/backShowJg")
+    public String backShowJg(Integer jgid, HttpSession session){
+        QUserBean qUserBeanjg = wqJgNewsService.backShowJg(jgid);
+        session.setAttribute("qUserBeanjg",qUserBeanjg);
+        JgManagerBean jgManagerBean = wqJgNewsService.backShowJgs(jgid);
+        session.setAttribute("jgManagerBean",jgManagerBean);
+        return "tiao/wq/updatejguser";
+    }
+    //修改机构信息
+    @ResponseBody
+    @RequestMapping("/updateJgUser")
+    public void updateJgUser(JgManagerBean jgManagerBean){
+        wqJgNewsService.updateJgUser(jgManagerBean);
     }
 }

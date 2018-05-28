@@ -93,7 +93,7 @@
         function actionFormatterq(value,row,index){
             var buttonxl= "";
             //buttonxl += "<button type='button' onclick='lockButton("+row.userid+")' class='btn btn-danger'>查看</button>";
-            //buttonxl += "<button type='button' onclick='updategruserButton("+row.grid+")' class='btn btn-info'>修改</button>";
+            buttonxl += "<button type='button' onclick='updateqyuserButton("+row.qyid+")' class='btn btn-info'>修改</button>";
             //buttonxl += "<button type='button' onclick='deblockingButton("+row.userid+")' class='btn btn-danger'>审核</button>";
             //buttonxl += "<button type='button' onclick='qxBlockButton("+row.userid+")' class='btn btn-info'>审核记录</button>";
             return buttonxl;
@@ -102,6 +102,37 @@
         $("#ExceportQyButton").on("click",function(){
             location.href = "/wqQyNewsController/ExceportQy.do";
         });
+        //修改企业信息
+        function updateqyuserButton(qyid){
+            BootstrapDialog.show({
+                title:"修改企业信息",//标题
+                message:$("<div></div>").load("<%=request.getContextPath()%>/wqQyNewsController/backShowQy.do?qyid="+qyid),//弹框内容
+                type:BootstrapDialog.TYPE_WARNING,//弹框的类型
+                closable: true,
+                draggable : true,
+                buttons:[
+                    {
+                        label:"确定",
+                        cssClass:"btn-success",
+                        action:function(dialog){
+                            $.ajax({
+                                url:"<%=request.getContextPath()%>/wqQyNewsController/updateQyUser.do",
+                                type:"post",
+                                data:$("#updateQyUserForm").serialize(),
+                                dataType:"text",
+                                success:function(result){
+                                    dialog.close();
+                                    location.reload();
+                                },
+                                error:function () {
+                                    alert("修改企业信息出错!");
+                                }
+                            })
+                        }
+                    }
+                ]
+            });
+        }
 
     </script>
 

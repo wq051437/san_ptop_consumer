@@ -15,4 +15,10 @@ public interface WqQyNewsService {
     List<QyManagerBean> ExceportQy();
 
     List<QUserBean> ExceportAccount();
+
+    QUserBean backShowQy(Integer qyid);
+
+    QyManagerBean backShowQys(Integer qyid);
+
+    void updateQyUser(QyManagerBean qyManagerBean);
 }

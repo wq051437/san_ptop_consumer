@@ -38,5 +38,8 @@
 	<dubbo:reference id="qUserService" interface="com.jk.service.QUserService"  check="false"  />
 	<dubbo:reference id="qTreeService" interface="com.jk.service.QTreeService"  check="false"  />
 	<dubbo:reference id="protocolService" interface="com.jk.service.ProtocolService"  check="false"  />
+	<dubbo:reference id="logService" interface="com.jk.service.LogService" check="false"  />
+	<dubbo:reference id="companyService" interface="com.jk.service.CompanyService"  check="false"  />
+	<dubbo:reference id="financeService" interface="com.jk.service.FinanceService"  check="false"  />
 	<!--  <dubbo:consumer check="false" /> -->
 </beans>  

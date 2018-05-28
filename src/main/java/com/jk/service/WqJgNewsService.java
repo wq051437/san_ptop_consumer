@@ -15,4 +15,10 @@ public interface WqJgNewsService {
     List<QUserBean> ExceportAccount();
 
     List<JgManagerBean> ExceportJg();
+
+    QUserBean backShowJg(Integer jgid);
+
+    JgManagerBean backShowJgs(Integer jgid);
+
+    void updateJgUser(JgManagerBean jgManagerBean);
 }

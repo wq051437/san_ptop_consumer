@@ -96,16 +96,23 @@
         });
         function actionFormatterp(value,row,index){
             var buttonxl= "";
-           // buttonxl += "<button type='button' onclick='lockButton("+row.userid+")' class='btn btn-danger'>查看</button>";
+            buttonxl += "<button type='button' onclick='selectGrButton("+row.grid+")' class='btn btn-success'>查看</button>";
             buttonxl += "<button type='button' onclick='updategruserButton("+row.grid+")' class='btn btn-info'>修改</button>";
-           /* buttonxl += "<button type='button' onclick='deblockingButton("+row.userid+")' class='btn btn-danger'>审核</button>";
-            buttonxl += "<button type='button' onclick='qxBlockButton("+row.userid+")' class='btn btn-info'>审核记录</button>";*/
+            /*buttonxl += "<button type='button' onclick='toExamineGrButton("+row.grid+")' class='btn btn-danger'>审核</button>";*/
             return buttonxl;
         }
         //导出个人信息
         $("#ExceportPeoplenewsButton").on("click",function(){
             location.href = "<%=request.getContextPath()%>/wqPeopleNewsController/ExceportPeopleNews.do";
         });
+        //查看个人信息
+        function selectGrButton(grid){
+            location.href = "<%=request.getContextPath()%>/wqPeopleNewsController/selectJbPeopleNews.do?grid="+grid;
+        }
+        //审核个人信息
+        function toExamineGrButton(grid){
+            alert(grid);
+        }
         //修改个人信息
         function updategruserButton(grid){
             BootstrapDialog.show({

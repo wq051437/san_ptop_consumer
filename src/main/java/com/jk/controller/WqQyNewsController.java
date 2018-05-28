@@ -1,6 +1,7 @@
 package com.jk.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.jk.model.GrManagerBean;
 import com.jk.model.JgManagerBean;
 import com.jk.model.QUserBean;
 import com.jk.model.QyManagerBean;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,5 +60,21 @@ public class WqQyNewsController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    //回显企业信息
+    @RequestMapping("/backShowQy")
+    public String backShowQy(Integer qyid, HttpSession session){
+        QUserBean qUserBean = wqQyNewsService.backShowQy(qyid);
+        session.setAttribute("qUserBeanqy",qUserBean);
+        QyManagerBean qyManagerBean = wqQyNewsService.backShowQys(qyid);
+        session.setAttribute("qyManagerBean",qyManagerBean);
+        session.setAttribute("xiala",qUserBean.getJobnumber());
+        return "tiao/wq/updateqyuser";
+    }
+    //修改企业信息
+    @ResponseBody
+    @RequestMapping("/updateQyUser")
+    public void updateQyUser(QyManagerBean qyManagerBean){
+        wqQyNewsService.updateQyUser(qyManagerBean);
     }
 }

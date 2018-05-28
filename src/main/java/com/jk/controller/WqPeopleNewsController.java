@@ -1,6 +1,7 @@
 package com.jk.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.jk.model.CapitalBean;
 import com.jk.model.GrManagerBean;
 import com.jk.model.QUserBean;
 import com.jk.service.WqPeopleNewsService;
@@ -48,6 +49,18 @@ public class WqPeopleNewsController {
     @RequestMapping("/updateGrUser")
     public void updateGrUser(QUserBean qUserBean){
         wqPeopleNewsService.updateGrUser(qUserBean);
+    }
+    //查询个人基本信息
+    @RequestMapping("/selectJbPeopleNews")
+    public String selectJbPeopleNews(Integer grid, HttpSession session){
+        QUserBean qUserBean = wqPeopleNewsService.backShowPeopleNews(grid);
+        session.setAttribute("grjbxx",qUserBean);
+        Integer userid = qUserBean.getUserid();
+        CapitalBean capitalBean = wqPeopleNewsService.selectCapital(userid);
+        session.setAttribute("grjbxxc",capitalBean);
+        GrManagerBean grManagerBean = wqPeopleNewsService.backShowPeopleNewss(grid);
+        session.setAttribute("grjbxxs",grManagerBean);
+        return "tiao/wq/selectGrInfor";
     }
     //导出个人信息
     @RequestMapping("/ExceportPeopleNews")

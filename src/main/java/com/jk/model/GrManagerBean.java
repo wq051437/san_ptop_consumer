@@ -12,6 +12,24 @@ public class GrManagerBean implements Serializable {
     private String gridcard;//身份证号
     private Integer userid;//用户ID
     private String grphoto;//头像
+    private String grsex;//性别
+    private String grbirthday;//出生日期
+
+    public String getGrsex() {
+        return grsex;
+    }
+
+    public void setGrsex(String grsex) {
+        this.grsex = grsex;
+    }
+
+    public String getGrbirthday() {
+        return grbirthday;
+    }
+
+    public void setGrbirthday(String grbirthday) {
+        this.grbirthday = grbirthday;
+    }
 
     public String getGrphoto() {
         return grphoto;
@@ -61,16 +79,21 @@ public class GrManagerBean implements Serializable {
                 ", gridcard='" + gridcard + '\'' +
                 ", userid=" + userid +
                 ", grphoto='" + grphoto + '\'' +
+                ", grsex='" + grsex + '\'' +
+                ", grbirthday='" + grbirthday + '\'' +
                 '}';
     }
 
-    public GrManagerBean(Integer grid, String grname, String gridcard, Integer userid, String grphoto) {
+    public GrManagerBean(Integer grid, String grname, String gridcard, Integer userid, String grphoto, String grsex, String grbirthday) {
         this.grid = grid;
         this.grname = grname;
         this.gridcard = gridcard;
         this.userid = userid;
         this.grphoto = grphoto;
+        this.grsex = grsex;
+        this.grbirthday = grbirthday;
     }
+
     public GrManagerBean() {
 
     }

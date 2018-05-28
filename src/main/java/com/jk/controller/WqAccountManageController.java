@@ -2,6 +2,7 @@ package com.jk.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jk.model.GrManagerBean;
+import com.jk.model.JgManagerBean;
 import com.jk.model.QUserBean;
 import com.jk.model.QyManagerBean;
 import com.jk.service.WqAccountManageService;
@@ -101,5 +102,11 @@ public class WqAccountManageController {
     @RequestMapping("/addQyUser")
     public void addQyUser(QUserBean qUserBean,QyManagerBean qyManagerBean){
         wqAccountManageService.addQyUser(qUserBean,qyManagerBean);
+    }
+    //新增机构信息
+    @ResponseBody
+    @RequestMapping("/addJgUser")
+    public void addJgUser(QUserBean qUserBean,JgManagerBean jgManagerBean){
+        wqAccountManageService.addJgUser(qUserBean,jgManagerBean);
     }
 }
