@@ -20,6 +20,17 @@ public class LogController {
 
     @Autowired
     private LogService logService;
+    //报表
+    @RequestMapping("/smnbaobiao")
+    @ResponseBody
+    public List  selecttongji() {
+        List list = logService.selecttongji();
+
+        return list;
+    }
+
+
+
     @ResponseBody
     @RequestMapping("/addloggerlist")
     public    JSONObject    addloggerlist(Integer offset, Integer limit){

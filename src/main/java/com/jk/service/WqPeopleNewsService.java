@@ -25,4 +25,18 @@ public interface WqPeopleNewsService {
     List<QUserBean> ExceportAccount();
 
     CapitalBean selectCapital(Integer userid);
+
+    QUserBean selectJbPeopleNews(Integer userid, Integer grid);
+
+    GrManagerBean selectJbPeopleNewss(Integer userid, Integer grid);
+
+    JSONObject queryGrEducation(Integer offset, Integer limit, Integer userid);
+
+    JSONObject queryGrWork(Integer offset, Integer limit, Integer userid);
+
+    JSONObject queryGrRoom(Integer offset, Integer limit, Integer userid);
+
+    JSONObject queryGrCar(Integer offset, Integer limit, Integer userid);
+
+    JSONObject queryGrLoanRecord(Integer offset, Integer limit, Integer userid, String loantitle, String applyloandatestary, String applyloandateend, Integer loanstate);
 }

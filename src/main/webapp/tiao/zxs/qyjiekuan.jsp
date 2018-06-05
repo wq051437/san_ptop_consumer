@@ -30,6 +30,7 @@
             </div>
             <center>
                 <table  width="600px">
+                    <input  type="hidden"  value="${sessionScope.quserid}" name="userid">
                     <tr>
                         <td><h4>企业名称：</h4></td>
                         <td><input name="companyname" id="companynameid" type="text" class="form-control"  placeholder="32位之内"/></td>

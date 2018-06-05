@@ -52,13 +52,13 @@ public class WqPeopleNewsController {
     }
     //查询个人基本信息
     @RequestMapping("/selectJbPeopleNews")
-    public String selectJbPeopleNews(Integer grid, HttpSession session){
-        QUserBean qUserBean = wqPeopleNewsService.backShowPeopleNews(grid);
+    public String selectJbPeopleNews(Integer userid,Integer grid, HttpSession session){
+        QUserBean qUserBean = wqPeopleNewsService.selectJbPeopleNews(userid,grid);
         session.setAttribute("grjbxx",qUserBean);
-        Integer userid = qUserBean.getUserid();
-        CapitalBean capitalBean = wqPeopleNewsService.selectCapital(userid);
+        Integer userids = qUserBean.getUserid();
+        CapitalBean capitalBean = wqPeopleNewsService.selectCapital(userids);
         session.setAttribute("grjbxxc",capitalBean);
-        GrManagerBean grManagerBean = wqPeopleNewsService.backShowPeopleNewss(grid);
+        GrManagerBean grManagerBean = wqPeopleNewsService.selectJbPeopleNewss(userid,grid);
         session.setAttribute("grjbxxs",grManagerBean);
         return "tiao/wq/selectGrInfor";
     }
@@ -91,6 +91,41 @@ public class WqPeopleNewsController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    //查询个人学历信息
+    @ResponseBody
+    @RequestMapping("/queryGrEducation")
+    public JSONObject queryGrEducation(Integer offset,Integer limit,Integer userid){
+        JSONObject json = wqPeopleNewsService.queryGrEducation(offset,limit,userid);
+        return json;
+    }
+    //查询个人工作信息
+    @ResponseBody
+    @RequestMapping("/queryGrWork")
+    public JSONObject queryGrWork(Integer offset,Integer limit,Integer userid){
+        JSONObject json = wqPeopleNewsService.queryGrWork(offset,limit,userid);
+        return json;
+    }
+    //查询个人房产信息
+    @ResponseBody
+    @RequestMapping("/queryGrRoom")
+    public JSONObject queryGrRoom(Integer offset,Integer limit,Integer userid){
+        JSONObject json = wqPeopleNewsService.queryGrRoom(offset,limit,userid);
+        return json;
+    }
+    //查询个人车产信息
+    @ResponseBody
+    @RequestMapping("/queryGrCar")
+    public JSONObject queryGrCar(Integer offset,Integer limit,Integer userid){
+        JSONObject json = wqPeopleNewsService.queryGrCar(offset,limit,userid);
+        return json;
+    }
+    //查询个人借款记录
+    @ResponseBody
+    @RequestMapping("/queryGrLoanRecord")
+    public JSONObject queryGrLoanRecord(Integer offset,Integer limit,Integer userid,String loantitle,String applyloandatestary,String applyloandateend,Integer loanstate){
+        JSONObject json = wqPeopleNewsService.queryGrLoanRecord(offset,limit,userid,loantitle,applyloandatestary,applyloandateend,loanstate);
+        return json;
     }
 
 }

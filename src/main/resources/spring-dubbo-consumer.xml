@@ -41,5 +41,11 @@
 	<dubbo:reference id="logService" interface="com.jk.service.LogService" check="false"  />
 	<dubbo:reference id="companyService" interface="com.jk.service.CompanyService"  check="false"  />
 	<dubbo:reference id="financeService" interface="com.jk.service.FinanceService"  check="false"  />
+	<dubbo:reference id="zxsczService" interface="com.jk.service.zxsCZService"  check="false"  />
+	<dubbo:reference id="wqHighchartsService" interface="com.jk.service.WqHighchartsService"  check="false"  />
+	<dubbo:reference id="collectionService" interface="com.jk.service.CollectionService"  check="false"  />
+	<dubbo:reference id="solrService" interface="com.jk.service.SolrService"  check="false"  timeout="30000"/>
+
+	<dubbo:reference id="investService" interface="com.jk.service.InvestService"  check="false"  />
 	<!--  <dubbo:consumer check="false" /> -->
 </beans>  

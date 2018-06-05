@@ -29,7 +29,7 @@ public class CompanyController {
     /*查询回显--------------------------------------------------------------------------------------------*/
     @RequestMapping("queryLoanById")
     @ResponseBody
-    public Companyloan queryLoanById(Integer companyid){
+    public Companyloan queryLoanByIds(Integer companyid){
         Companyloan companyloan = companyService.queryLoanById(companyid);
 
         return companyloan;

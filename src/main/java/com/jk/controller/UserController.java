@@ -2,11 +2,14 @@ package com.jk.controller;
 
 import com.jk.model.UserBean;
 import com.jk.service.UserService;
+import com.jk.util.RandomNum;
+import com.jk.util.SendCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -70,21 +73,54 @@ public class UserController {
          Integer   count3=  userService.queryloginrenshu(sdf.format(date));
          //历史总用户数
          Integer  count2 =   userService.queryzongrenshu();
+         Integer count4 = userService.querydsh();
+         Integer count5 = userService.querydcl();
+         Integer count6 = userService.querydfb();
          //当前在线人数
            List list=  new ArrayList();
            list.add(count);
            list.add(count2);
            list.add(count3);
+           list.add(count4);
+           list.add(count5);
+           list.add(count6);
      return  list;
      }
     //短信接口调用
-    /*@ResponseBody
-    @RequestMapping("/getInterfaceSMS")
-    public String getInterfaceSMS(String phone ,HttpSession session) throws IOException {
-        String ccode = com.jk.util.HttpClient.togetString(phone);
-        // 将得到的验证码放入session然后 去判断
-        session.setAttribute("ccode", ccode);
-        session.setAttribute("fasongtime", new Date().getTime());
-        return "1";
-    }*/
+    @RequestMapping("duanXin")
+    public void sendCodeServlet(String phone,HttpServletRequest request)throws Exception{
+        RandomNum randomNum = new RandomNum();
+        RandomNum.num = randomNum.getRandom();
+        System.out.println(RandomNum.num);
+        try {
+            SendCode.sendSms(phone, RandomNum.num,"SMS_136425004");  //调用短信发送接口，三个参数，手机号，验证码，短信模板
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        request.getSession().setAttribute("number",RandomNum.num);
+    }
+    @ResponseBody
+    @RequestMapping("addpanduanphone")
+    public   String   addpanduanphone(String  phone,String  yanzma,HttpServletRequest request,HttpSession session){
+        UserBean  userBean=   userService.addpanduanphone(phone);
+        session.setAttribute("userBean", userBean);
+        String number = (String) request.getSession().getAttribute("number");
+        if(number.equals(yanzma)){
+            if(userBean!=null){
+                return   userBean.getUserpass();
+            }else{
+                return  "1";
+            }
+        }else{
+            return  "2";
+        }
+    }
+    @ResponseBody
+    @RequestMapping("updateusermima")
+    public   String  updateusermima(String userpass,HttpSession session){
+        UserBean userBean = (UserBean) session.getAttribute("userBean");
+        userService.updateusermima(userBean.getUserid(),userpass);
+        return  "";
+    }
 }

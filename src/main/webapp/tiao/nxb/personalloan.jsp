@@ -43,16 +43,13 @@
             </div><br><br><br>
             <div class="col-md-1">
                 <button class="btn btn-large btn-block btn-success" type="button" id="souyisou">搜索</button>
-                <button type="reset" class="btn btn-large btn-block btn-success glyphicon glyphicon-refresh">重置</button>
+                <button type="reset" class="btn btn-primary col-lg-3 glyphicon glyphicon-refresh">重置</button>
             </div>
 
         </div>
 </div>
 <%--<div class="panel panel-primary">--%>
-    <div style="height: 50%">
-        <table id="tableone"></table>
-    </div>
-
+    <table id="tableone"></table>
 <%--</div>--%>
 <!-- 修改弹框 -->
 <div id="updateloan"></div>
@@ -73,6 +70,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="loanid" id="loanid"/>
                     联系人: &nbsp;&nbsp;&nbsp; <input type="text"  id="loanname" name="loanname" disabled='disabled'/><br>
+                    借款标题: <input type="text" id="loantitle" name="loantitle" disabled='disabled'/><br>
                     联系电话: <input type="text" id="loanphone" name="loanphone" disabled='disabled'/><br>
                     借款期限: <input type="text" id="loanmonth" name="loanmonth" disabled='disabled'/><br>
                     借款金额: <input type="text" id="loanmoney" name="loanmoney" disabled='disabled'/><br>
@@ -105,9 +103,11 @@
             </div>
             <form id="form_datas" method="post">
                 <div class="modal-body">
-
+                    ID:<input type="text" name="loanid" id="loanids">
 
                     处理意见: <textarea id="process" name="process"></textarea>
+                    处理结果：<input type="radio" name="loanhandle"  value="1">同意
+                              <input type="radio" name="loanhandle" value="2">不同意
 
 
                 </div>
@@ -130,13 +130,19 @@
         $('#tableone').bootstrapTable({
             url:'<%=request.getContextPath()%>/personalController/queryPersonalloan.do',
             striped: true,//隔行变色
+            showColumns:true,//是否显示 内容列下拉框
+            showPaginationSwitch:true,//是否显示 数据条数选择框
             minimumCountColumns:1,//最小留下一个
+            showRefresh:true,//显示刷新按钮
+            showToggle:true,//显示切换视图
+            search:false,//是否显示搜索框
             clickToSelect: true, //是否启用点击选中行
             searchOnEnterKey:true,//设置为 true时，按回车触发搜索方法，否则自动触发搜索方法
             pagination:true,//开启分页
             paginationLoop:false,//开启分页无限循环
             pageNumber:1,//当前页数
             pageSize:4,//每页条数
+            pageList:[2,3,4,5,6,7],//如果设置了分页，设置可供选择的页面数据条数。设置为All 则显示所有记录。
             queryParams:function(){
                 return {
                     'loanname':$("#loannames").val(),
@@ -146,6 +152,7 @@
 
             columns:[[
                 {field:'loanid',title:'编号',width:"75px",align:"center"},
+                {field:'loantitle',title:'借款标题',width:"75px",align:"center"},
                 {field:'loanname',title:'联系人',width:"75px",align:"center"},
                 {field:'loanphone',title:'联系人电话',width:"75px",align:"center"},
                 {field:'loanmoney',title:'借款金额',width:"75px",align:"center"},
@@ -228,17 +235,18 @@
 
 
                 $("#loanid").val(result.loanid);
+                $("#loantitle").val(result.loantitle);
                 $("#loanname").val(result.loanname);
                 $("#loanphone").val(result.loanphone);
                 $("#loanmonth").val(result.loanmonth);
-                    var a=result.loanmonth;
+                    /*var a=result.loanmonth;
                     if(a==1){
                         $("#loanmonth").val('3');
                     }else if(a==2){
                         $("#loanmonth").val('6');
                     }else {
                         $("#loanmonth").val('12');
-                    }
+                    }*/
                 $("#loanmoney").val(result.loanmoney);
                 $("#loantypeid").val(result.loantypeid);
                     var b=result.loantypeid;

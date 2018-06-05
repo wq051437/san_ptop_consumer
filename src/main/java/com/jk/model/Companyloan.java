@@ -15,7 +15,7 @@ public class Companyloan implements Serializable{
     private String registration;     //公司注册号
     private String contactname;     //联系人
     private long companyphone;       //手机号
-    private Integer loanmoney;      //借款金额
+    private Double loanmoney;      //借款金额
     private Integer loanrate;       //利率（%）
     private Integer loandate;        //借款期限
     private Integer loantype;       //借款类型
@@ -29,6 +29,10 @@ public class Companyloan implements Serializable{
     private String resultname;      //处理人
     private String resulttime;      //处理时间
     private Integer loanhandle;     //处理结果 -------1.同意   2.不同意
+    private Integer lendstate;      //放款状态------- 1.已放款   2.未放款
+    private Integer userid;         //关联用户表
+
+    private String capitalname;      //关联账号名称
 
 
     public Integer getCompanyid() {
@@ -79,11 +83,11 @@ public class Companyloan implements Serializable{
         this.companyphone = companyphone;
     }
 
-    public Integer getLoanmoney() {
+    public Double getLoanmoney() {
         return loanmoney;
     }
 
-    public void setLoanmoney(Integer loanmoney) {
+    public void setLoanmoney(Double loanmoney) {
         this.loanmoney = loanmoney;
     }
 
@@ -191,6 +195,30 @@ public class Companyloan implements Serializable{
         this.loanhandle = loanhandle;
     }
 
+    public Integer getLendstate() {
+        return lendstate;
+    }
+
+    public void setLendstate(Integer lendstate) {
+        this.lendstate = lendstate;
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+    public String getCapitalname() {
+        return capitalname;
+    }
+
+    public void setCapitalname(String capitalname) {
+        this.capitalname = capitalname;
+    }
+
     @Override
     public String toString() {
         return "Companyloan{" +
@@ -214,6 +242,9 @@ public class Companyloan implements Serializable{
                 ", resultname='" + resultname + '\'' +
                 ", resulttime='" + resulttime + '\'' +
                 ", loanhandle=" + loanhandle +
+                ", lendstate=" + lendstate +
+                ", userid=" + userid +
+                ", capitalname='" + capitalname + '\'' +
                 '}';
     }
 }

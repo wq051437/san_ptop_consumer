@@ -1,6 +1,7 @@
 package com.jk.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.jk.model.CollectionBean;
 import com.jk.model.Personalloan;
 import com.jk.service.RepaymentsService;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by new鹏 on 2018/5/17.
@@ -17,12 +19,12 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("repaymentsController")
 public class RepaymentsController {
 
-      @Resource
-      private RepaymentsService repaymentsService;
+    @Resource
+    private RepaymentsService repaymentsService;
 
     @ResponseBody
     @RequestMapping("repaymentslist")
-    public JSONObject repaymentslist(Integer offset, Integer limit, HttpSession session, Personalloan personalloan2, String  starttime, String  endtime){
+    public JSONObject repaymentslist(Integer offset, Integer limit, HttpSession session, Personalloan  personalloan2,String  starttime,String  endtime){
         JSONObject json=  repaymentsService.queryrepaymentslist(offset,limit,personalloan2,starttime,endtime);
         String b = json.get("b").toString();
         String rows = json.get("rows").toString();
@@ -32,7 +34,7 @@ public class RepaymentsController {
     }
     @ResponseBody
     @RequestMapping("repaymentslist2")
-    public JSONObject repaymentslist2(Integer offset, Integer limit, HttpSession session, Personalloan  personalloan2){
+    public JSONObject repaymentslist2(Integer offset, Integer limit,HttpSession session,Personalloan  personalloan2){
         JSONObject json=  repaymentsService.queryrepaymentslist2(offset,limit,personalloan2);
         String b2 = json.get("b2").toString();
         session.setAttribute("b2",b2);
@@ -47,4 +49,13 @@ public class RepaymentsController {
         return json;
     }
 
+
+    @ResponseBody
+    @RequestMapping("querylistgeren")
+    public List querylistgeren(Integer  userid){
+        List   list= repaymentsService.querylistgeren(userid);
+        return list;
+    }
+
 }
+

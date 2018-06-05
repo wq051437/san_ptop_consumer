@@ -77,18 +77,18 @@
          </div>
         <div class="col-md-5">
             <font  size="5px" color="black">
-                  待审核借款项目[](个数)
+                待审核借款项目[<span  id="dshxm"></span>](个数)
             </font>
         </div>
 
         <div class="col-md-5">
             <font  size="5px" color="black">
-                待处理的个人借款意向[](个数)
+                待处理的个人借款意向[<span  id="dclxm"></span>](个数)
             </font>
         </div>
         <div class="col-md-5">
             <font  size="5px" color="black">
-                待发布的借款项目[](个数)
+                待发布的借款项目[<span  id="dfbxm"></span>](个数)
             </font>
         </div>
         <div class="col-md-5">
@@ -238,6 +238,9 @@
                 $("#two").html(results[2]);
                 $("#three").html(results[1]);
                 $("#four").html(results[2]);
+                $("#dshxm").html(results[3]);
+                $("#dclxm").html(results[4]);
+                $("#dfbxm").html(results[5]);
             }
         });
         $('#p2').show();

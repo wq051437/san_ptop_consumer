@@ -72,7 +72,9 @@
         </table>
     </form>
 </div>
+<div style="height: 45%">
 <table id="zyltable"></table>
+</div>
 <script type="text/javascript">
     $(function () {
         $("#zyltable").bootstrapTable({

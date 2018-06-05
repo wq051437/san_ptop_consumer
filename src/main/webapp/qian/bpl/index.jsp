@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>肥猪理财</title>
 </head>
 <frameset rows="*" cols="*" framespacing="0" frameborder="no" border="0"   name="aa"><!--top-->
     <frame src="Qheader.jsp" name="topFrame2" scrolling="no" noresize="noresize" id="topFrame" title="topFrame" />

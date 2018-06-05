@@ -12,7 +12,7 @@ public class Personalloan implements Serializable{
     private String loantitle;       //借款标题
     private String loanname;         //联系人名字
     private Long loanphone;       //联系人电话
-    private Integer loanmoney;       //借款金额
+    private Double loanmoney;       //借款金额
     private Integer moneyrate;       //利率（%）
     private Integer loanmonth;       //借款期限（月）
     private Integer loantypeid;      //借款类型
@@ -80,11 +80,11 @@ public class Personalloan implements Serializable{
         this.loanphone = loanphone;
     }
 
-    public Integer getLoanmoney() {
+    public Double getLoanmoney() {
         return loanmoney;
     }
 
-    public void setLoanmoney(Integer loanmoney) {
+    public void setLoanmoney(Double loanmoney) {
         this.loanmoney = loanmoney;
     }
 

@@ -39,8 +39,8 @@
             columns: [[
                 {field:'logId',title:'序号',width:100,align:"center"},
                 {field:'methodName',title:'方法名',width:100,align:"center"},
-                {field:'params',title:'参数',width:250,align:"center"},
-                {field:'user',title:'用户',width:100,align:"center"},
+                {field:'params',title:'参数',width:300,align:"center"},
+                //{field:'userid',title:'用户',width:100,align:"center"},
                 {field:'exception',title:'异常',width:100,align:"center"},
             ]]
         })

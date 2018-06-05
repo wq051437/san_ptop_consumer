@@ -1,5 +1,7 @@
 package com.jk.service;
 
+import com.jk.model.Capital;
+import com.jk.model.Companyloan;
 import com.jk.model.Personalloan;
 import com.jk.model.TArea;
 
@@ -13,6 +15,10 @@ public interface zxsJkService {
     //查询地区
     List<TArea> queryArea();
 
-    //新增
-    void addjiekuan(Personalloan personalloan);
+    ///个人借款
+    void addjiekuan(Personalloan personalloan, Capital capital);
+    //企业借款
+    void addqyjiekuan(Companyloan companyloan, Capital capital);
+    //我的借款-还款中
+    List<Personalloan> queryPersonalloan(Personalloan personalloan);
 }

@@ -14,7 +14,7 @@
 <body>
 <br><br>
 <%--投资人条件查************************************************************************--%>
-<%--<div style="width:1200px; height:250px;">--%>
+<div>
     <div class="panel panel-primary" id="demo1">
         <div class="panel-heading">
             <span class="glyphicon glyphicon-search"></span>债权管理
@@ -45,15 +45,16 @@
                     <option value="3">机构
                 </select>
             </div><br><br><br>
-            <div class="col-md-1">
-                <button class="btn btn-large btn-block btn-success" type="button" id="tiaojian">
+            <div class="col-md-2">
+                <button class="btn btn-large btn-block btn-primary" type="button" id="tiaojian">
                     搜索
-                    <span class="glyphicon glyphicon-arrow-right"></span> </button>
-            </div>
-            <div class="col-md-1">
-                <button class="btn btn-large btn-block btn-primary" type="reset" id="">
-                    导出
                     <span class="glyphicon glyphicon-refresh"></span> </button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-large btn-block btn-success" type="reset" >
+                    导出Words
+                    <span class="glyphicon glyphicon-arrow-right"></span> </button>
+
             </div>
         </div>
         <div class="panel-footer"></div>
@@ -203,18 +204,18 @@
                     <span class="glyphicon glyphicon-arrow-right"></span> </button>
             </div>
             <div class="col-md-1">
-                <button class="btn btn-large btn-block btn-primary" type="reset" >
+                <button class="btn btn-large btn-block btn-primary" type="reset"  >
                     导出
                     <span class="glyphicon glyphicon-refresh"></span> </button>
             </div>
         </div>
         <div class="panel-footer"></div>
     </div>
-<%--</div>--%>
+</div>
 
 
 
-<%--<div style="width:1200px; height:270px;">--%>
+<div>
     <div class="panel panel-primary">
         <div class="panel-heading">
             <input type='button' class='btn btn-info active' onclick="search()"  style='width:70px; height:30px;' value="投资中">
@@ -223,16 +224,17 @@
             <input type='button' class='btn btn-info active' onclick="yizhuanchu()"  style='width:70px; height:30px;' value="已转出">
         </div>
     </div>
+        <div style="height: 45%">
+            <table id="zxstable"></table>
+            <table id="zxshuikuanzhong" ></table>
+            <table id="zxsyijieqing" ></table>
+            <table id="zxsyizhuanchu" ></table>
+        </div>
 
-    <div style="height: 37%">
-        <table id="zxstable"></table>
-        <table id="zxshuikuanzhong" ></table>
-        <table id="zxsyijieqing" ></table>
-        <table id="zxsyizhuanchu" ></table>
-    </div>
-
-<%--</div>--%>
+</div>
 <script type="text/javascript">
+
+
     $(function(){
         $("#demo2").hide();//隐藏div
         $("#demo3").hide();//隐藏div
@@ -359,7 +361,7 @@
         $('#zxsyijieqing').bootstrapTable({
             url:'<%=request.getContextPath()%>/creditorController/queryCreditorPage.do',
             striped: true,//隔行变色
-            //showColumns:true,//是否显示内容列下拉框
+            //showColumns:true,//是否显示 内容列下拉框
             //showPaginationSwitch:true,//是否显示 数据条数选择框
             minimumCountColumns:1,//最小留下一个
             //showRefresh:true,//显示刷新按钮
@@ -412,8 +414,8 @@
             //showColumns:true,//是否显示 内容列下拉框
             //showPaginationSwitch:true,//是否显示 数据条数选择框
             minimumCountColumns:1,//最小留下一个
-           // showRefresh:true,//显示刷新按钮
-            //showToggle:true,//显示切换视图
+            //showRefresh:true,//显示刷新按钮
+            ///showToggle:true,//显示切换视图
            // search:true,//是否显示搜索框
             clickToSelect: true, //是否启用点击选中行
             searchOnEnterKey:true,//设置为 true时，按回车触发搜索方法，否则自动触发搜索方法
@@ -421,7 +423,7 @@
             paginationLoop:false,//开启分页无限循环
             pageNumber:1,//当前页数
             pageSize:4,//每页条数
-           // pageList:[2,3,4,5,6,7],//如果设置了分页，设置可供选择的页面数据条数。设置为All 则显示所有记录。
+            //pageList:[2,3,4,5,6,7],//如果设置了分页，设置可供选择的页面数据条数。设置为All 则显示所有记录。
 
             columns:[[
                 {field:'xuhaoid',title:'序号',width:100,align:"center"},

@@ -42,4 +42,24 @@ public interface UserService {
      * @return
      */
     Integer queryloginrenshu(String format);
+
+    /**
+     * 查询手机号是否存在
+     * @param phone
+     * @return
+     */
+    UserBean addpanduanphone(String phone);
+
+    /**
+     * 修改密码
+     * @param userid
+     * @param userpass
+     */
+    void updateusermima(Integer userid, String userpass);
+
+    Integer querydsh();
+
+    Integer querydcl();
+
+    Integer querydfb();
 }

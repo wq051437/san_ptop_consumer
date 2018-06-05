@@ -48,10 +48,8 @@
 
     </div>
 </div>
-<div style="height: 50%">
-    <table id="tablethree"></table>
-</div>
 
+<table id="tablethree"></table>
 
 <script type="text/javascript">
 $(function(){
@@ -62,11 +60,11 @@ function search(){
     $('#tablethree').bootstrapTable({
         url:'<%=request.getContextPath()%>/financeController/queryrecharge.do',
         striped: true,//隔行变色
-       // showColumns:true,//是否显示 内容列下拉框
-        //showPaginationSwitch:true,//是否显示 数据条数选择框
+        showColumns:true,//是否显示 内容列下拉框
+        showPaginationSwitch:true,//是否显示 数据条数选择框
         minimumCountColumns:1,//最小留下一个
-        //showRefresh:true,//显示刷新按钮
-        //showToggle:true,//显示切换视图
+        showRefresh:true,//显示刷新按钮
+        showToggle:true,//显示切换视图
         search:false,//是否显示搜索框
         clickToSelect: true, //是否启用点击选中行
         searchOnEnterKey:true,//设置为 true时，按回车触发搜索方法，否则自动触发搜索方法
@@ -74,7 +72,7 @@ function search(){
         paginationLoop:false,//开启分页无限循环
         pageNumber:1,//当前页数
         pageSize:4,//每页条数
-        //pageList:[2,3,4,5,6,7],//如果设置了分页，设置可供选择的页面数据条数。设置为All 则显示所有记录。
+        pageList:[2,3,4,5,6,7],//如果设置了分页，设置可供选择的页面数据条数。设置为All 则显示所有记录。
         queryParams:function(){
             return {
                 'username':$("#usernames").val(),
