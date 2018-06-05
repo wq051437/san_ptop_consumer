@@ -144,5 +144,7 @@
     <orderEntry type="library" name="Maven: org.noggit:noggit:0.5" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.21" level="project" />
     <orderEntry type="library" name="Maven: org.log4mongo:log4mongo-java:0.7.4" level="project" />
+    <orderEntry type="library" name="Maven: com.aliyun:aliyun-java-sdk-core:3.2.3" level="project" />
+    <orderEntry type="library" name="Maven: com.aliyun:aliyun-java-sdk-dysmsapi:1.0.0" level="project" />
   </component>
 </module>
